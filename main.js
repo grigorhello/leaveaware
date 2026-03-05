@@ -20,7 +20,7 @@ class TrialManager {
             companySize: companySize || 'not-specified',
             timestamp: new Date().toISOString()
         };
-        
+
         // Check for duplicates
         if (this.signups.some(e => e.email.toLowerCase() === email.toLowerCase())) {
             return { success: false, message: 'This email is already registered for a free trial!' };
@@ -63,7 +63,7 @@ function setupFormHandler() {
 
     form.addEventListener('submit', (e) => {
         e.preventDefault();
-        
+
         const email = emailInput.value.trim();
         const companySize = companySizeInput.value;
 
@@ -97,7 +97,7 @@ function setupFormHandler() {
 function showMessage(element, text, type) {
     element.textContent = text;
     element.className = `form-message ${type}`;
-    
+
     // Auto-clear success message after 5 seconds
     if (type === 'success') {
         setTimeout(() => {
@@ -115,7 +115,7 @@ function setupSmoothScrolling() {
 
         e.preventDefault();
         const targetId = link.getAttribute('href');
-        
+
         if (targetId === '#') return;
 
         const target = document.querySelector(targetId);
@@ -123,7 +123,7 @@ function setupSmoothScrolling() {
 
         // Check if user prefers reduced motion
         const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        
+
         if (prefersReduced) {
             target.scrollIntoView();
         } else {
@@ -137,7 +137,7 @@ function setupAccessibility() {
     // Smooth scroll respects prefers-reduced-motion
     const html = document.documentElement;
     const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    
+
     if (prefersReduced) {
         html.classList.add('no-scroll');
     }
