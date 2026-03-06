@@ -17,12 +17,11 @@
             </div>
             <nav class="topbar-nav">
                 <a href="#why" class="nav-link">Why LeaveAware?</a>
-                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="pricing/index.html" class="nav-link">Pricing</a>
                 <a href="#learn" class="nav-link">Learn</a>
             </nav>
             <div class="topbar-right">
-                <button class="btn-text">Log in</button>
-                <button class="btn-primary-pill">Pricing & free trial</button>
+                <a href="pricing/index.html" class="btn-primary-pill">Start free trial</a>
             </div>
         </div>
     </header>
@@ -43,10 +42,10 @@
                     <span class="headline-accent">leave planner</span>
                     for small teams
                 </h1>
-                <p class="hero-subheadline">Request time off, approve instantly from your phone, get push notifications for every change. LeaveAware replaces spreadsheets and Slack with one simple app.</p>
+                <p class="hero-subheadline">Request time off, approve instantly from your phone, and try Smart free for 30 days. LeaveAware replaces spreadsheets and Slack with one simple app.</p>
                 <div class="hero-cta">
-                    <button class="btn-primary-large">Start free trial</button>
-                    <p class="cta-microcopy">No credit card required</p>
+                    <a href="pricing/index.html" class="btn-primary-large">Start free trial</a>
+                    <p class="cta-microcopy">30‑day Smart trial, no credit card required</p>
                 </div>
             </div>
             <div class="hero-phone">
@@ -54,24 +53,41 @@
                     <div class="phone-notch"></div>
                     <div class="phone-screen">
                         <div class="app-header">
-                            <span class="app-title">March 2026</span>
+                            <span class="app-title">Team calendar</span>
                         </div>
                         <div class="app-content">
-                            <div class="team-member">
-                                <div class="member-name">Alex</div>
-                                <div class="member-status available">Available</div>
+                            <div class="calendar-header">
+                                <span class="calendar-month">March 2026</span>
                             </div>
-                            <div class="team-member">
-                                <div class="member-name">Jordan</div>
-                                <div class="member-status on-leave">On Leave</div>
+                            <div class="calendar-grid">
+                                <div class="calendar-day">10</div>
+                                <div class="calendar-day">11</div>
+                                <div class="calendar-day">12</div>
+                                <div class="calendar-day">13</div>
+                                <div class="calendar-day conflict">14</div>
+                                <div class="calendar-day conflict">15</div>
+                                <div class="calendar-day">16</div>
                             </div>
-                            <div class="team-member">
-                                <div class="member-name">Sam</div>
-                                <div class="member-status available">Available</div>
+                            <div class="leave-entries">
+                                <div class="leave-entry">
+                                    <span class="leave-name">Alex</span>
+                                    <span class="leave-type vacation">Vacation</span>
+                                </div>
+                                <div class="leave-entry">
+                                    <span class="leave-name">Jordan</span>
+                                    <span class="leave-type pto">PTO</span>
+                                </div>
+                                <div class="leave-entry">
+                                    <span class="leave-name">Sam</span>
+                                    <span class="leave-type vacation">Vacation</span>
+                                </div>
                             </div>
-                            <div class="notification-badge">
-                                <span class="badge-icon">🔔</span>
-                                <span class="badge-text">Approval needed</span>
+                            <div class="alert-card warning">
+                                <div class="alert-icon">⚠</div>
+                                <div class="alert-content">
+                                    <div class="alert-title">Short-staff risk</div>
+                                    <div class="alert-details">Mar 14–15<br>3 on leave, 2 available</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -202,15 +218,6 @@
         </div>
     </section>
 
-    <!-- Pricing Teaser -->
-    <section class="pricing" id="pricing">
-        <div class="container">
-            <h2>Simple pricing</h2>
-            <p>Starting at <strong>$29/month</strong> per team.</p>
-            <p>Everything you need to manage team leave—included.</p>
-        </div>
-    </section>
-
     <!-- FAQ Section -->
     <section class="faq">
         <div class="container">
@@ -237,36 +244,6 @@
                     <p>Yes. LeaveAware automatically includes public holidays for your country. Holidays appear in the calendar so everyone knows when the team is off.</p>
                 </details>
             </div>
-        </div>
-    </section>
-
-    <!-- Final CTA Section -->
-    <section class="final-cta" id="learn">
-        <div class="container">
-            <h2>Get started with LeaveAware</h2>
-            <p>Try free for 14 days. Full access, no credit card required.</p>
-            <form id="trial-form" class="cta-form">
-                <div class="form-group">
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        placeholder="your@email.com"
-                        required
-                        class="form-input"
-                    >
-                </div>
-                <div class="form-group">
-                    <select id="company-size" name="company-size" class="form-input">
-                        <option value="">Company size (optional)</option>
-                        <option value="5-10">5–10 employees</option>
-                        <option value="11-25">11–25 employees</option>
-                        <option value="26-50">26–50 employees</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn-primary-large">Start free trial</button>
-                <p id="form-message" class="form-message"></p>
-            </form>
         </div>
     </section>
 

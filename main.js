@@ -2,112 +2,19 @@
    Main.js - LeaveAware Landing Page
    ============================================ */
 
-// Store and load free trial signups
-class TrialManager {
-    constructor() {
-        this.storageKey = 'leaveaware_trials';
-        this.loadSignups();
-    }
+// Form handling removed - no email form
 
-    loadSignups() {
-        const stored = localStorage.getItem(this.storageKey);
-        this.signups = stored ? JSON.parse(stored) : [];
-    }
+// Email validation removed
 
-    addSignup(email, companySize) {
-        const entry = {
-            email,
-            companySize: companySize || 'not-specified',
-            timestamp: new Date().toISOString()
-        };
-
-        // Check for duplicates
-        if (this.signups.some(e => e.email.toLowerCase() === email.toLowerCase())) {
-            return { success: false, message: 'This email is already registered for a free trial!' };
-        }
-
-        this.signups.push(entry);
-        localStorage.setItem(this.storageKey, JSON.stringify(this.signups));
-        return { success: true, message: 'Thanks! Check your email to continue.' };
-    }
-
-    getAllSignups() {
-        return this.signups;
-    }
-}
-
-// Email validation
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-// Initialize trial manager
-const trials = new TrialManager();
+// Initialize trial manager removed
 
 // Form handling
 document.addEventListener('DOMContentLoaded', () => {
-    setupFormHandler();
     setupSmoothScrolling();
     setupAccessibility();
-    setupCTAButtons();
+    setupEarlyAccessForm();
 });
 
-function setupFormHandler() {
-    const form = document.getElementById('trial-form');
-    const emailInput = document.getElementById('email');
-    const companySizeInput = document.getElementById('company-size');
-    const messageEl = document.getElementById('form-message');
-
-    if (!form) return;
-
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        const email = emailInput.value.trim();
-        const companySize = companySizeInput.value;
-
-        // Validate email
-        if (!email) {
-            showMessage(messageEl, 'Please enter your email', 'error');
-            emailInput.focus();
-            return;
-        }
-
-        if (!isValidEmail(email)) {
-            showMessage(messageEl, 'Please enter a valid email address', 'error');
-            emailInput.focus();
-            return;
-        }
-
-        // Add to trials
-        const result = trials.addSignup(email, companySize);
-
-        if (result.success) {
-            showMessage(messageEl, result.message, 'success');
-            form.reset();
-            companySizeInput.value = '';
-            emailInput.focus();
-        } else {
-            showMessage(messageEl, result.message, 'error');
-        }
-    });
-}
-
-function showMessage(element, text, type) {
-    element.textContent = text;
-    element.className = `form-message ${type}`;
-
-    // Auto-clear success message after 5 seconds
-    if (type === 'success') {
-        setTimeout(() => {
-            element.textContent = '';
-            element.className = 'form-message';
-        }, 5000);
-    }
-}
-
-// Smooth scrolling for anchor links
 function setupSmoothScrolling() {
     document.addEventListener('click', (e) => {
         const link = e.target.closest('a[href^="#"]');
@@ -166,21 +73,35 @@ function setupAccessibility() {
     });
 }
 
-// Button clicks for CTAs that scroll to form
-function setupCTAButtons() {
-    document.addEventListener('click', (e) => {
-        if (e.target.textContent.includes('Start free trial')) {
-            const form = document.getElementById('trial-form');
-            if (form) {
-                e.preventDefault();
-                const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-                if (prefersReduced) {
-                    form.scrollIntoView();
-                } else {
-                    form.scrollIntoView({ behavior: 'smooth' });
-                }
-                document.getElementById('email').focus();
-            }
+// Early access form handling
+function setupEarlyAccessForm() {
+    const form = document.getElementById('early-access-form');
+    if (!form) return;
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const email = document.getElementById('email').value.trim();
+        const companySize = document.getElementById('company-size').value;
+
+        // Validate email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert('Please enter a valid email address.');
+            return;
         }
+
+        // Store in localStorage
+        const data = {
+            email,
+            companySize,
+            timestamp: new Date().toISOString(),
+            source: 'pricing-page'
+        };
+        localStorage.setItem('leaveawareEarlyAccess', JSON.stringify(data));
+
+        // Show success message
+        form.style.display = 'none';
+        document.getElementById('success-message').style.display = 'block';
     });
 }
