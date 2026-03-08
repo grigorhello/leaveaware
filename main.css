@@ -408,7 +408,11 @@ button:focus-visible {
 
 .hero-content:not(:only-child) {
     justify-self: end;
+    /* when the hero has a sibling (image), left-align the text for better readability */
+    text-align: left;
+    align-items: flex-start;
 }
+
 
 /* pricing page specific styles */
 .pricing-hero {
@@ -664,22 +668,23 @@ button:focus-visible {
     color: var(--text-muted);
 }
 
-/* Mobile Phone Mockup */
+/* Mobile Phone Mockup (replaced with hero image) */
 .hero-phone {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/* hide old phone frame if still present */
 .phone-frame {
-    width: 280px;
-    height: 560px;
-    background: #000;
-    border-radius: 40px;
-    padding: 12px;
-    box-shadow: 0 20px 60px rgba(15, 23, 42, 0.3);
-    position: relative;
-    overflow: hidden;
+    display: none;
+}
+
+/* new hero image styling */
+.hero-phone img {
+    max-width: 500px; /* avoid the graphic overtaking the layout */
+    width: 100%;
+    height: auto;
 }
 
 .phone-notch {
