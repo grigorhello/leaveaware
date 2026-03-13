@@ -22,18 +22,18 @@
     <header class="topbar">
         <div class="topbar-container">
             <div class="topbar-left">
-                <a href="../index.html" class="logo-link">
+                <a href="../index.html#home" class="logo-link">
                     <img src="../assets/leaveaware-logo.svg" alt="LeaveAware" class="logo">
-                    <span class="brand-name">LeaveAware</span>
+                    <span class="brand-name">Leave<span class="brand-accent">Aware</span></span>
                 </a>
             </div>
             <nav class="topbar-nav">
                 <a href="../index.html#why" class="nav-link">Features</a>
                 <a href="./index.html" class="nav-link">Pricing</a>
-                <a href="../index.html#learn" class="nav-link">Learn</a>
+                <a href="../index.html#faq" class="nav-link">FAQ</a>
             </nav>
-            <div class="topbar-right">
-                <a href="#early-access" class="btn-primary-pill">Free trial & pricing</a>
+            <div class="topbar-right" aria-hidden="true">
+                <span class="btn-primary-pill" style="visibility: hidden; pointer-events: none;">Start Free Trial</span>
             </div>
         </div>
     </header>
@@ -42,11 +42,9 @@
     <section class="hero pricing-hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-headline">
-                    Try LeaveAware for free
-                </h1>
-                <p class="hero-subheadline">Two simple plans. Start with a 30-day free trial of Smart, then choose the plan that fits your team.</p>
-                <p class="hero-note">Minimum 5 users. Cancel anytime.</p>
+                <h1 class="hero-headline">Simple <span class="pricing-word-accent">pricing</span> for small teams</h1>
+                <p class="hero-subheadline">Built for teams replacing spreadsheets, chat messages, and email approvals.</p>
+                <p class="hero-explainer">Start with a free 30-day trial of LeaveAware <span class="pricing-plan-accent">Smart</span>, then choose the plan that fits your team.</p>
             </div>
         </div>
     </section>
@@ -55,40 +53,44 @@
     <section class="pricing-section">
         <div class="container">
             <div class="pricing-cards">
-                <div class="pricing-card">
+                <div class="pricing-card pricing-card-core">
                     <h3 class="pricing-name">LeaveAware Core</h3>
-                    <div class="pricing-price">$2.50<span> / user / month</span></div>
+                    <div class="pricing-price">$1<span> user/month</span></div>
                     <p class="pricing-description">Simple leave tracking for small teams</p>
-                    <p class="pricing-min">Minimum 5 users</p>
-                    <ul class="pricing-features">
-                        <li>Unlimited employees</li>
-                        <li>Time-off requests &amp; approvals</li>
-                        <li>Shared team leave calendar</li>
-                        <li>Vacation allowance tracking</li>
-                        <li>Mobile notifications</li>
-                        <li>Slack / Email notifications</li>
-                        <li>Manager approvals</li>
-                        <li>Company holidays</li>
-                    </ul>
-                    <a href="#early-access" class="btn-primary-large">Start free trial</a>
+                    <div class="pricing-feature-group">
+                        <p class="pricing-group-title">Includes</p>
+                        <ul class="pricing-features">
+                            <li>Shared team leave calendar</li>
+                            <li>Time-off requests and approvals</li>
+                            <li>Leave balance tracking</li>
+                            <li>Mobile and email notifications</li>
+                            <li>Manager approvals</li>
+                            <li>Company holidays</li>
+                        </ul>
+                    </div>
+                    <a href="#early-access" class="btn-primary-large pricing-cta pricing-cta-secondary">Start free trial</a>
                 </div>
-                <div class="pricing-card popular">
-                    <h3 class="pricing-name">LeaveAware Smart</h3>
-                    <div class="pricing-price">$5<span> / user / month</span></div>
-                    <p class="pricing-description">Plan smarter. Avoid staffing surprises.</p>
-                    <p class="pricing-min">Minimum 5 users</p>
-                    <ul class="pricing-features">
-                        <li>Everything in Core</li>
-                        <li>Smart staffing alerts</li>
-                        <li>Conflict detection</li>
-                        <li>Team availability heatmap</li>
-                        <li>Department coverage rules</li>
-                        <li>Manager insights dashboard</li>
-                        <li>Upcoming staffing risk alerts</li>
-                        <li>Slack notifications for conflicts</li>
-                        <li>Priority support</li>
-                    </ul>
-                    <a href="#early-access" class="btn-primary-large">Start free trial</a>
+                <div class="pricing-card popular pricing-card-smart">
+                    <div class="pricing-name-row">
+                        <h3 class="pricing-name">LeaveAware <span class="pricing-plan-accent">Smart</span></h3>
+                        <div class="pricing-badge">Most popular</div>
+                    </div>
+                    <div class="pricing-price">$2.50<span> user/month</span></div>
+                    <p class="pricing-description">Prevent staffing conflicts before they disrupt work</p>
+                    <div class="pricing-feature-group">
+                        <p class="pricing-group-title">Everything in Core, plus</p>
+                        <ul class="pricing-features">
+                            <li>Conflict detection</li>
+                            <li>Smart staffing alerts</li>
+                            <li>Team availability heatmap</li>
+                            <li>Upcoming staffing risk alerts</li>
+                            <li>Department coverage rules</li>
+                            <li>Manager insights dashboard</li>
+                            <li>Slack conflict notifications</li>
+                            <li>Priority support</li>
+                        </ul>
+                    </div>
+                    <a href="#early-access" class="btn-primary-large pricing-cta">Start free trial</a>
                 </div>
             </div>
         </div>
@@ -97,34 +99,55 @@
     <!-- Trial Explanation -->
     <section class="trial-info">
         <div class="container">
-            <p class="trial-text">Start with a 30-day free trial of the Smart plan. No commitment required — after the trial you can choose Smart or downgrade to Core. Minimum 5 users.</p>
+            <p class="trial-inline">Your first 30 days are completely free. No credit card required. Switch plans anytime.</p>
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section class="faq">
+    <section class="faq pricing-faq">
         <div class="container">
             <h2>Frequently asked questions</h2>
+            <p class="faq-subtitle">Everything you need to know before getting started.</p>
             <div class="faq-list">
                 <details class="faq-item">
                     <summary>What’s included in LeaveAware Core?</summary>
-                    <p>Core covers unlimited employees, requests & approvals, shared calendars, balance tracking, notifications, and company holidays.</p>
+                    <p>LeaveAware Core includes unlimited employees, leave requests and approvals, a shared team calendar, leave balance tracking, notifications, and company holidays.</p>
                 </details>
                 <details class="faq-item">
                     <summary>What extra features does Smart include?</summary>
-                    <p>Smart adds staffing alerts, conflict detection, availability heatmaps, department rules, manager insights, and priority support.</p>
+                    <p>LeaveAware Smart includes everything in Core, plus staffing alerts, conflict detection, team availability heatmaps, department coverage rules, manager insights, and priority support.</p>
                 </details>
                 <details class="faq-item">
                     <summary>How does the 30-day free trial work?</summary>
-                    <p>You start on Smart for 30 days at no cost. Afterward you can stay on Smart or downgrade to Core.</p>
+                    <p>Your team starts on LeaveAware Smart for 30 days at no cost. When the trial ends, you can stay on Smart or switch to Core.</p>
                 </details>
                 <details class="faq-item">
-                    <summary>Is there a minimum team size?</summary>
-                    <p>Yes, both plans require at least 5 users.</p>
+                    <summary>Do I need a credit card to start the trial?</summary>
+                    <p>No. You can start your 30-day trial without entering a credit card.</p>
                 </details>
                 <details class="faq-item">
                     <summary>Can I downgrade from Smart later?</summary>
-                    <p>Absolutely. Downgrading is easy and your data remains intact.</p>
+                    <p>Yes. You can switch plans anytime, and your team data stays intact.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Will my data be lost if I change plans?</summary>
+                    <p>No. Your employee data, leave history, and settings remain safe and accessible when you change plans.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Is LeaveAware hard to set up?</summary>
+                    <p>No. Most teams can get started in just a few minutes without complex setup or training.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Can employees and managers both use it?</summary>
+                    <p>Yes. Employees can request leave and view balances, while managers can review requests, track team availability, and prevent conflicts.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Can my team start small and grow later?</summary>
+                    <p>Yes. LeaveAware is designed for growing teams, so you can start with your current team and add more employees as you grow.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Who is LeaveAware best for?</summary>
+                    <p>LeaveAware is built for small teams that want a simple way to manage time off and stay aware of staffing coverage.</p>
                 </details>
             </div>
         </div>
@@ -135,33 +158,38 @@
         <div class="container">
             <div class="early-access-content">
                 <div class="early-access-left">
-                    <div class="early-access-badge">Limited early supporter offer</div>
-                    <h2>Lock in 50% off for life</h2>
-                    <p class="early-access-subtitle">Join early and we’ll notify you as soon as LeaveAware launches. Early supporters get 50% lifetime discount for as long as they keep their account active.</p>
-                    <p class="early-access-micro">No spam. Just launch updates and your discount access.</p>
+                    <div class="early-access-badge">Early supporter offer</div>
+                    <h2>Join early and lock in <span class="pricing-plan-accent">50%</span> off for life</h2>
+                    <p class="early-access-subtitle">Join the early access list and we’ll notify you as soon as LeaveAware launches. Early supporters get <span class="pricing-plan-accent">50%</span> off for life as long as their account stays active.</p>
+                    <p class="early-access-micro">No spam. Just product updates, launch access, and your discount.</p>
                     <div class="early-access-benefits">
                         <div class="benefit-chip">50% lifetime discount</div>
                         <div class="benefit-chip">Priority launch access</div>
-                        <div class="benefit-chip">Be first to try Smart features</div>
+                        <div class="benefit-chip">Early access to Smart features</div>
                     </div>
                 </div>
                 <div class="early-access-right">
                     <div class="early-access-form-card">
-                        <form id="early-access-form">
-                            <input type="email" id="email" placeholder="Enter your email" required>
-                            <select id="company-size">
-                                <option value="">Company size (optional)</option>
-                                <option value="1–5">1–5</option>
-                                <option value="6–10">6–10</option>
-                                <option value="11–25">11–25</option>
-                                <option value="26–50">26–50</option>
+                        <form id="early-access-form" action="https://formspree.io/f/mojklepe" method="POST" class="waitlist-form">
+                            <label for="email" class="visually-hidden">Email address</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                            <label for="company-size" class="visually-hidden">Team size (optional)</label>
+                            <select id="company-size" name="team_size">
+                                <option value="">Select team size</option>
+                                <option value="1-5">1–5</option>
+                                <option value="6-10">6–10</option>
+                                <option value="11-25">11–25</option>
+                                <option value="26-50">26–50</option>
                                 <option value="50+">50+</option>
                             </select>
-                            <button type="submit" class="btn-primary-large">Claim my 50% lifetime discount</button>
-                            <p class="form-micro">Be first to try LeaveAware and keep your discount for the lifetime of your account.</p>
+                            <input type="hidden" name="source" value="leaveaware_pricing_waitlist">
+                            <input type="text" name="_gotcha" style="display:none">
+                            <p class="form-trust">We’ll only email you about launch updates and access.</p>
+                            <button type="submit" class="btn-primary-large">Join early access</button>
+                            <p class="form-micro">You’ll be first to try LeaveAware and keep your <span class="pricing-plan-accent">50%</span> discount for the lifetime of your account.</p>
                         </form>
-                        <div id="success-message" class="success-message" style="display: none;">
-                            Thanks! You’re on the list. We’ll notify you at launch and reserve your 50% lifetime discount.
+                        <div id="success-message" class="success-message" role="status" aria-live="polite" style="display: none;">
+                            Thanks! You’re on the list. We’ll notify you at launch and reserve your <span class="pricing-plan-accent">50%</span> lifetime discount.
                         </div>
                     </div>
                 </div>

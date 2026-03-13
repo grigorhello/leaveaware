@@ -73,35 +73,70 @@ function setupAccessibility() {
     });
 }
 
-// Early access form handling
 function setupEarlyAccessForm() {
     const form = document.getElementById('early-access-form');
-    if (!form) return;
+    const successMessage = document.getElementById('success-message');
+    if (!form || !successMessage) return;
 
-    form.addEventListener('submit', (e) => {
+    const submitButton = form.querySelector('button[type="submit"]');
+    const defaultButtonLabel = submitButton ? submitButton.textContent : '';
+    let hideTimer;
+
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
-        const email = document.getElementById('email').value.trim();
-        const companySize = document.getElementById('company-size').value;
-
-        // Validate email
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            alert('Please enter a valid email address.');
-            return;
+        if (submitButton) {
+            submitButton.disabled = true;
+            submitButton.textContent = 'Submitting...';
         }
 
-        // Store in localStorage
-        const data = {
-            email,
-            companySize,
-            timestamp: new Date().toISOString(),
-            source: 'pricing-page'
-        };
-        localStorage.setItem('leaveawareEarlyAccess', JSON.stringify(data));
+        successMessage.style.display = 'none';
+        successMessage.classList.remove('is-error', 'is-visible');
 
-        // Show success message
-        form.style.display = 'none';
-        document.getElementById('success-message').style.display = 'block';
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: {
+                    Accept: 'application/json'
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('Form submission failed');
+            }
+
+            form.reset();
+            successMessage.innerHTML = 'Thanks! You’re on the list. We’ll notify you at launch and reserve your <span class="pricing-plan-accent">50%</span> lifetime discount.';
+            hideTimer = showFormPopup(successMessage, hideTimer);
+        } catch (error) {
+            successMessage.textContent = 'Something went wrong. Please try again in a moment.';
+            successMessage.classList.add('is-error');
+            hideTimer = showFormPopup(successMessage, hideTimer);
+        } finally {
+            if (submitButton) {
+                submitButton.disabled = false;
+                submitButton.textContent = defaultButtonLabel;
+            }
+        }
     });
+}
+
+function showFormPopup(messageElement, existingTimer) {
+    if (existingTimer) {
+        clearTimeout(existingTimer);
+    }
+
+    messageElement.style.display = 'block';
+    requestAnimationFrame(() => {
+        messageElement.classList.add('is-visible');
+    });
+
+    return setTimeout(() => {
+        messageElement.classList.remove('is-visible');
+        setTimeout(() => {
+            messageElement.style.display = 'none';
+            messageElement.classList.remove('is-error');
+        }, 180);
+    }, 3600);
 }
