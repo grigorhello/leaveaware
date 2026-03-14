@@ -1339,6 +1339,8 @@ button:focus-visible {
 .pricing-section {
     padding: 14px var(--s-4) 12px;
     background: linear-gradient(180deg, rgba(241, 245, 255, 0.82) 0%, rgba(248, 250, 255, 0.96) 22%, var(--bg) 52%);
+    margin-top: -1px;
+    position: relative;
 }
 
 .pricing-cards {
