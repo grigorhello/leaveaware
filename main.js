@@ -8,12 +8,48 @@
 
 // Initialize trial manager removed
 
+const CTA_TRACKING_RULES = [
+    { selector: '#pricing_menu_item_cta', location: 'home_top_nav_pricing' },
+    { selector: '#start_free_trial_bar_cta', location: 'home_top_bar_trial' },
+    { selector: '#start_free_trial_cta', location: 'home_hero_trial' },
+    { selector: '#pricing_tire_cta1', location: 'pricing_core_plan' },
+    { selector: '#pricing_tire_cta2', location: 'pricing_smart_plan' },
+    { selector: '#join_early_access_cta', location: 'pricing_join_early_access' },
+    { selector: 'a.nav-link[href="../pricing/index.html"]', location: 'legal_top_nav_pricing' },
+    { selector: 'a.btn-primary-pill[href="../pricing/index.html"]', location: 'legal_top_bar_trial' }
+];
+
 // Form handling
 document.addEventListener('DOMContentLoaded', () => {
     setupSmoothScrolling();
     setupAccessibility();
+    setupAnalyticsTracking();
     setupEarlyAccessForm();
 });
+
+function trackAnalyticsEvent(eventName, params = {}) {
+    if (typeof window.gtag !== 'function') return;
+
+    window.gtag('event', eventName, params);
+}
+
+function setupAnalyticsTracking() {
+    document.addEventListener('click', (e) => {
+        for (const rule of CTA_TRACKING_RULES) {
+            const element = e.target.closest(rule.selector);
+            if (!element) continue;
+
+            trackAnalyticsEvent('cta_click', {
+                cta_id: element.id || '',
+                cta_location: rule.location,
+                cta_text: element.textContent.trim(),
+                link_url: element.getAttribute('href') || '',
+                page_path: window.location.pathname
+            });
+            return;
+        }
+    });
+}
 
 function setupSmoothScrolling() {
     document.addEventListener('click', (e) => {
@@ -105,6 +141,13 @@ function setupEarlyAccessForm() {
             if (!response.ok) {
                 throw new Error('Form submission failed');
             }
+
+            const formData = new FormData(form);
+            trackAnalyticsEvent('early_access_submit_success', {
+                form_id: form.id,
+                source: formData.get('source') || '',
+                team_size: formData.get('team_size') || ''
+            });
 
             form.reset();
             successMessage.innerHTML = 'Thanks! You’re on the list. We’ll notify you at launch and reserve your <span class="pricing-plan-accent">50%</span> lifetime discount.';
